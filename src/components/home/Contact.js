@@ -3,6 +3,7 @@ import { Section, SectionTitle } from '../../styled-components/HomeStyles';
 import { Container, Row, Col } from 'react-bootstrap';
 import ContactForm from './Contact-Form';
 import ContactInfo from './Contact-Info';
+import PersonalInfo from '../../constants/PersonalInfo';
 
 const Contact = ({ title }) => {
     return (
@@ -17,7 +18,7 @@ const Contact = ({ title }) => {
                             <ContactForm />
                         </Col>
                         <Col md="4">
-                            <ContactInfo />
+                            <ContactInfo personalInfo={PersonalInfo} />
                         </Col>
                     </Row>
                 </Container>
