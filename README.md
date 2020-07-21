@@ -17,7 +17,7 @@ When finished, it can replace nmy current personal website from WordPress to Rea
 ## Unit Testing
 1. Use Jest
 
-
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
