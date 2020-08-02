@@ -1,6 +1,23 @@
 import styled from 'styled-components';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
+
+export const WorksModal = styled(Modal)`
+    text-align: center;
+    & .tab-content{
+        font-size: 15px;
+        text-align: left;
+    }
+    & h3, .h4{
+        font-family: "Roboto Slab", serif;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+        margin-top: 22px;
+        margin-bottom: 22px;
+        font-size: 1.75rem;
+    }
+`;
 
 export const Section = styled.section`
     position: relative;
@@ -83,7 +100,7 @@ export const FilterBtn = styled(Button)`
     border: 1px solid;
 `;
 
-export const SingleProject = styled.div`
+export const GalleryProject = styled.div`
     position: relative;
     margin: 0 auto;
     margin-top: 10px;
@@ -91,6 +108,15 @@ export const SingleProject = styled.div`
     height: 200px;
     overflow: hidden;
     
+    & .gallery_image{
+        display: block;
+        width: 100%;
+        height: auto;
+        -webkit-filter: grayscale(50%);
+        filter: grayscale(50%);
+    }
+`;
+export const SingleProject = styled.div`
     & .gallery_image{
         display: block;
         width: 100%;

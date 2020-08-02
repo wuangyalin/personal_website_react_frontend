@@ -55,7 +55,7 @@ const ContactForm = () => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="contact-message">
                         <Form.Label>Message</Form.Label>
-                        <Form.Control type="textarea" name="contactMessage" placeholder="Enter your message" onChange={handleChange} required />
+                        <Form.Control as="textarea" rows="5" name="contactMessage" placeholder="Enter your message" onChange={handleChange} required />
                         <Form.Control.Feedback type="invalid">
                             Please provide some messages.
                         </Form.Control.Feedback>

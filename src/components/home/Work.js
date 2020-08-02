@@ -7,14 +7,14 @@ import { Container } from 'react-bootstrap';
 const Work = ({ title }) => {
     return (
         <React.Fragment>
-            <Container >
-                <Section id="work" className="myworks">
+            <Section id="work" className="myworks">
+                <Container >
                     <SectionTitle>
                         {title}
                     </SectionTitle>
                     <WorksGallery />
-                </Section>
-            </Container>
+                </Container>
+            </Section>
         </React.Fragment>
     );
 };

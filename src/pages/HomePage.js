@@ -4,8 +4,8 @@ import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import Body from '../components/home/Body';
 
-
 const HomePage = () => {
+
     return (
         <React.Fragment>
             <NavBar />

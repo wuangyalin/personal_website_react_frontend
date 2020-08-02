@@ -14,18 +14,21 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
+    "react-html-parser": "^2.0.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-scroll": "^1.8.0",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.4.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "three": "^0.119.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "build_webpack": "webpack --mode production",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,5 +45,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
