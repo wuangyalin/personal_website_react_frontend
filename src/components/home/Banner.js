@@ -11,14 +11,11 @@ class Banner extends React.Component {
         var SHADOW_MAP_WIDTH = 2048,
             SHADOW_MAP_HEIGHT = 1024;
 
-        var HUD_MARGIN = 0.05;
-
         var SCREEN_WIDTH = window.innerWidth;
         var SCREEN_HEIGHT = window.innerHeight;
         var FLOOR = -300;
 
         var camera, controls, scene, renderer;
-        var container, stats;
 
         var NEAR = 10,
             FAR = 4000;
@@ -177,6 +174,9 @@ class Banner extends React.Component {
             // loadFurniture("desk_leg");
             // loadFurniture("screen_right");
             // loadFurniture("computer_frame");
+            // loadFurniture("package");
+            // loadFurniture("keyboard01");
+            // loadFurniture("mouse");
             loadFurniture("all");
 
         }
@@ -201,23 +201,23 @@ class Banner extends React.Component {
 
         }
 
-        var loadText =  function(material, path, name, repeatx, repeaty) {
-            var textureLoader = new THREE.TextureLoader();
-            textureLoader.load("../../assets/models/banner_parts/" + name, function (map) {
-                map.wrapS = THREE.RepeatWrapping;
-                map.wrapT = THREE.RepeatWrapping;
-                map.anisotropy = 4;
-                if (repeatx && repeaty)
-                    map.repeat.set(repeatx, repeaty);
-                material.map = map;
-                material.needsUpdate = true;
-            });
-        }
+        // var loadText =  function(material, path, name, repeatx, repeaty) {
+        //     var textureLoader = new THREE.TextureLoader();
+        //     textureLoader.load("../../assets/models/banner_parts/" + name, function (map) {
+        //         map.wrapS = THREE.RepeatWrapping;
+        //         map.wrapT = THREE.RepeatWrapping;
+        //         map.anisotropy = 4;
+        //         if (repeatx && repeaty)
+        //             map.repeat.set(repeatx, repeaty);
+        //         material.map = map;
+        //         material.needsUpdate = true;
+        //     });
+        // }
 
         var loadFurniture = function(name, m1, m2, m3, m4, m5, m6, m7) {
             var loader = new THREE.ObjectLoader();
             loader.load("../../assets/models/banner_parts/" + name + ".json", function (object) {
-                object.scale.set(30, 30, 30);
+                object.scale.set(40, 40, 40);
                 object.position.set(0, FLOOR, 0);
                 object.rotation.y = -Math.PI / 2;
                 object.traverse(function (child) {
@@ -225,6 +225,7 @@ class Banner extends React.Component {
                     if (child instanceof THREE.Mesh) {
                         child.castShadow = true;
                         child.receiveShadow = true;
+                        // child.material.color.set(0x0000ff);
                     }
 
                 });
@@ -274,7 +275,7 @@ class Banner extends React.Component {
 
     }
     render() {
-        return <div ref={ref => (this.mount = ref)} />;
+        return <div id="home" ref={ref => (this.mount = ref)} />;
     }
 }
 

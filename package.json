@@ -28,7 +28,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "build_webpack": "webpack --mode production",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
