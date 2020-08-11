@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactHtmlParser from 'react-html-parser';
-import { Projects, PorjectList } from '../../constants/Projects';
+// import { Projects, PorjectList } from '../../constants/Projects';
 import { FilterBtn, SingleProject, GalleryProject, WorksModal } from '../../styled-components/HomeStyles';
 import { Row, Col, Modal, Button, Tabs, Tab, ProgressBar } from 'react-bootstrap';
 // import { useSpring, animated } from 'react-spring'
@@ -16,9 +16,29 @@ const WorksGallery = () => {
         percentage: '',
         link: ''
     };
-    const [filters, updateFilters] = useState(Projects);
+    const [projects, setProjects] = useState({});
+    const [projectList, setProjectList] = useState({});
+    const [filters, updateFilters] = useState({});
     const [show, setShow] = useState(false);
     const [currentModalContent, updateCurrentModalContent] = useState(defaultModalContent);
+
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const projectsResult = await fetch('api/projects');
+            const projectListResult = await fetch('api/projectlist');
+            const projectsBody = await projectsResult.json();
+            const projectListBody = await projectListResult.json();
+            
+            setProjects(projectsBody);
+            setProjectList(projectListBody);
+            updateFilters(projectsBody);
+            setIsLoaded(true);
+        }
+        fetchData();
+    }, []);
+
     const handleClose = () => {
         updateCurrentModalContent(() => {
             return defaultModalContent;
@@ -28,7 +48,7 @@ const WorksGallery = () => {
     const handleShow = event => {
         const clickedIndex = event.target.getAttribute("data-index");
         updateCurrentModalContent(() => {
-            return Projects[clickedIndex];
+            return projects[clickedIndex];
         });
         setShow(true);
     };
@@ -40,15 +60,16 @@ const WorksGallery = () => {
             target: { value }
         } = event;
         updateFilters(() => {
-            return Projects.filter(f => f.type.indexOf(value) >= 0);
+            return projects.filter(f => f.type.indexOf(value) >= 0);
         });
     };
 
     return (
+        isLoaded ?
         <React.Fragment>
             <Row>
                 <Col md="12" className="button-group filters-button-group">
-                    {PorjectList.map((list, i) => {
+                    {projectList.map((list, i) => {
                         return (
                             <FilterBtn key={i} value={list.type} className="btn-light" onClick={onFilter}>{list.name}</FilterBtn>
                         )
@@ -115,6 +136,10 @@ const WorksGallery = () => {
                 </Modal.Footer>
             </WorksModal>
         </React.Fragment >
+        :
+        <React.Fragment>
+                Loading...
+        </React.Fragment>
     );
 
 };

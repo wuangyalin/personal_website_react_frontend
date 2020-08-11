@@ -275,7 +275,7 @@ class Banner extends React.Component {
 
     }
     render() {
-        return <div id="home" ref={ref => (this.mount = ref)} />;
+        return <div id="banner" ref={ref => (this.mount = ref)} />;
     }
 }
 

@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:7000/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
@@ -22,7 +23,8 @@
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1",
-    "three": "^0.119.1"
+    "three": "^0.119.1",
+    "whatwg-fetch": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

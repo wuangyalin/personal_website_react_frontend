@@ -1,5 +1,4 @@
-import React from 'react';
-import Socials from '../../constants/Socials';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { SocialLink } from '../../styled-components/HomeStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,21 +22,40 @@ const ProfileCol = styled(Col)`
 library.add(fab, faDownload);
 
 const AboutSocial = () => {
-    return (<React.Fragment>
-        {Socials.map((social, i) => {
-            return (
-                <Row key={i}>
-                    <ProfileCol className="profile mx-auto d-block">
-                        <SocialLink className={social.id}>
-                            <a href={social.link} target="_blank" rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={[social.iconType, social.icon]} size={social.size}></FontAwesomeIcon> {social.name}
-                            </a>
-                        </SocialLink>
-                    </ProfileCol>
-                </Row>
-            )
-        })}
-    </React.Fragment>)
+
+    const [socials, setSocials] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch('api/socials');
+            const body = await result.json();
+            setSocials(body);
+            setIsLoaded(true);
+        }
+        fetchData();
+    }, []);
+
+    return (
+        isLoaded ?
+            <React.Fragment>
+                {socials.map((social, i) => {
+                    return (
+                        <Row key={i}>
+                            <ProfileCol className="profile mx-auto d-block">
+                                <SocialLink className={social.id}>
+                                    <a href={social.link} target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={[social.iconType, social.icon]} size={social.size}></FontAwesomeIcon> {social.name}
+                                    </a>
+                                </SocialLink>
+                            </ProfileCol>
+                        </Row>
+                    )
+                })}
+            </React.Fragment>
+            :
+            <React.Fragment>loading...</React.Fragment>
+    )
 };
 
 
