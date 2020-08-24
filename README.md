@@ -1,3 +1,23 @@
+# UNDER CONSTRUCTION
+This project is aiming to pratice the react.js skills.
+When finished, it can replace nmy current personal website from WordPress to React.
+
+## Front-end
+- [x] React.js
+- [ ] Redux
+- [ ] Thunk
+
+## Backend
+- [ ] Node.js
+- [ ] Express
+
+## DB
+- [ ] mongo/dynamodb
+
+## Unit Testing
+1. Use Jest
+
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
